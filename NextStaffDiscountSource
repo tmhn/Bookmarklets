@@ -1,1 +1,18 @@
-javascript: (function staffDiscountCode() {pagePricesStr = $(".Price").text();pagePrices = pagePricesStr.split("£");pagePrices.splice(0, 1);var prices = [];pagePriceElms = $(".Price");for (i = 0; i < pagePrices.length; i++) {currentPrice = pagePrices[i];discountedPrice = calcDiscountPrice(currentPrice);prices[prices.length] = discountedPrice;$(pagePriceElms[i]).append(" <span style='color:red;'>£" + ((discountedPrice % 1 != 0)?discountedPrice.toFixed(2): discountedPrice) + "</span>");}function calcDiscountPrice(currentPrice) {discountValue = currentPrice * 0.25;return currentPrice - discountValue;}})();
+javascript: (function staffDiscountCode() {
+    pagePricesStr = $(".Price").text();
+    pagePrices = pagePricesStr.split("£");
+    pagePrices.splice(0, 1);
+    var prices = [];
+    pagePriceElms = $(".Price");
+    for (i = 0; i < pagePrices.length; i++) {
+        currentPrice = pagePrices[i];
+        discountedPrice = calcDiscountPrice(currentPrice);
+        prices[prices.length] = discountedPrice;
+        $(pagePriceElms[i]).append(" <span style='color:red;'>£" + ((discountedPrice % 1 != 0) ? discountedPrice.toFixed(2) : discountedPrice) + "</span>");
+    }
+
+    function calcDiscountPrice(currentPrice) {
+        discountValue = currentPrice * 0.25;
+        return currentPrice - discountValue;
+    }
+})();
