@@ -1,4 +1,5 @@
 javascript: (function staffDiscountCode() {
+    $(".discountedPrice").remove();
     pagePricesStr = $(".Price").text();
     pagePrices = pagePricesStr.split("£");
     pagePrices.splice(0, 1);
@@ -8,7 +9,7 @@ javascript: (function staffDiscountCode() {
         currentPrice = pagePrices[i];
         discountedPrice = calcDiscountPrice(currentPrice);
         prices[prices.length] = discountedPrice;
-        $(pagePriceElms[i]).append(" <span style='color:red;'>£" + ((discountedPrice % 1 != 0) ? discountedPrice.toFixed(2) : discountedPrice) + "</span>");
+        $(pagePriceElms[i]).append(" <span class='discountedPrice'style='color:red;'>£" + ((discountedPrice % 1 != 0) ? discountedPrice.toFixed(2) : discountedPrice) + "</span>");
     }
 
     function calcDiscountPrice(currentPrice) {
