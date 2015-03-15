@@ -1,0 +1,42 @@
+//Remove previous occurence of price
+//$(".discountedPrice").remove();
+
+// - Quarter calculation  -  variable*(1-0.25);
+
+var priceEls = document.getElementsByClassName("Price");
+
+for (var i = 0; i < priceEls.length; i++) {
+  var price = priceEls[i].innerText;
+  alert("Price: " + price);
+    // - String length determiner
+    if (price.length>4){
+         alert("Length - long");
+        
+         // Split the price and assing a groupID to both
+         
+        var res1 = price.split("£");
+        alert(res1);
+        
+        //Gets first number
+        res2 = res1[1].replace("-", "");
+        alert(res2);
+        alert(res2*(1-0.25)+ ": Discount Price");
+        
+        //$(priceEls[i]).append("<span class='discountedPrice'style='color:red;'>£" + (((res2 % 1 != 0) ? res2.toFixed(2) : res2) + "</span>");
+        
+        
+        //$(pagePriceElms[i]).append(" <span class='discountedPrice'style='color:red;'>£" + ((discountedPrice % 1 != 0) ? discountedPrice.toFixed(2) : discountedPrice) + "</span>");
+        
+        //Gets second number
+        res3 = res1[2].replace("-","");
+        alert(res3);
+        alert(res3*(1-0.25)+ ": Discount Price");
+    }
+    else{
+         alert("Length - normal");
+        // Treat normally
+        //$(priceEls[i]).append("<span class='discountedPrice'style='color:red;'>£" + (((res2 % 1 != 0) ? res2.toFixed(2) : res2) + "</span>");
+    }
+}
+
+// - Initial part of algorithm needs to be similar to First version
