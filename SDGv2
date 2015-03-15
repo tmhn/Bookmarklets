@@ -1,19 +1,20 @@
 //Remove previous occurence of price
 //$(".discountedPrice").remove();
 
-// - Quarter calculation  -  variable*(1-0.25);
-
 var priceEls = document.getElementsByClassName("Price");
+//var priceEls = $(".Price").text();
+
+//Array for finalPrices that are going to be appended to page
+var prices = [];
 
 for (var i = 0; i < priceEls.length; i++) {
-  var price = priceEls[i].innerText;
+  var price = priceEls[i].innerText; //price is the inner text string
   alert("Price: " + price);
-    // - String length determiner
+
+    // --- String length determiner --
+    //Long price
     if (price.length>4){
          alert("Length - long");
-        
-         // Split the price and assing a groupID to both
-         
         var res1 = price.split("£");
         alert(res1);
         
@@ -21,22 +22,33 @@ for (var i = 0; i < priceEls.length; i++) {
         res2 = res1[1].replace("-", "");
         alert(res2);
         alert(res2*(1-0.25)+ ": Discount Price");
-        
-        //$(priceEls[i]).append("<span class='discountedPrice'style='color:red;'>£" + (((res2 % 1 != 0) ? res2.toFixed(2) : res2) + "</span>");
-        
-        
-        //$(pagePriceElms[i]).append(" <span class='discountedPrice'style='color:red;'>£" + ((discountedPrice % 1 != 0) ? discountedPrice.toFixed(2) : discountedPrice) + "</span>");
+        res2 = res2*(1-0.25); //Inline calculation
+         
         
         //Gets second number
         res3 = res1[2].replace("-","");
         alert(res3);
         alert(res3*(1-0.25)+ ": Discount Price");
+        res3 = res3*(1-0.25); //Inline calculation
+        alert(res3);
+        //$(priceEls[i]).append("<span class='discountedPrice'style='color:red;'>£" + (((res3 % 1 != 0) ? res3.toFixed(2) : res3) + "</span>");
+        
+        //Append res2 & res3
+        var res4 = "£"+res2 + " - £" + res3; //Creating new variable that holds the discountPrices with strings for "£"
+        alert(res4 + " : Concatenated prices");
     }
+    //Short price
     else{
          alert("Length - normal");
         // Treat normally
-        //$(priceEls[i]).append("<span class='discountedPrice'style='color:red;'>£" + (((res2 % 1 != 0) ? res2.toFixed(2) : res2) + "</span>");
+        var res5 = price.split("£");
+        res6 = res5[1].replace(",","");
+        alert(res6*(1-0.25)+ ": Discount Price");
+        
     }
 }
 
 // - Initial part of algorithm needs to be similar to First version
+// - When the discountPrice has been calculated, add to an array that loops through correctly. 
+// So both "sections: 'greater than 4' AND 'less than 4' are inserted directly when the price is read from the page. 
+// Then loop through the array and append the value to the Page.
