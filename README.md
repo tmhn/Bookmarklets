@@ -6,3 +6,6 @@ A staff discount generator for UK
 
 ####Top Of Page (TopOfPage.js)
 Smooth scroll to top of page
+
+####Instagram Image Opener (InstaOpener.js)
+New tab with Insta-image
