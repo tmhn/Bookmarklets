@@ -1,4 +1,4 @@
-// StaffDiscount.js
+//StaffDiscount.js
 javascript: (function staffDiscountGenerator() {
     $(".discountedPrice").remove();
     var priceEls = document.getElementsByClassName("Price");
@@ -26,6 +26,22 @@ javascript: (function staffDiscountGenerator() {
             res8test = ((res8 % 1 != 0) ? res8.toFixed(2) : res8);
             $(priceEls[i]).append(" <span class='discountedPrice' style='color:red;'>£" + res8test + "</span>");
         }
+    }
+    $(".dDPrice").remove();
+    $(".dk_options").css("display", "inline;");
+    var newTomsvar = $("li.InStock.a");
+    var textArray = $("li.InStock > a");
+    var oldArray = $("li.InStock").text().split("£");
+    var newArray = oldArray.splice(1, oldArray.length - 1);
+    var dropDownPrices = [];
+    for (var j = 0; j < newArray.length; j++) {
+        newArray[j].replace(/\s/g, '');
+        var newArrayDecimal = newArray[j].indexOf(".") + 3;
+        var newArrayPrice = newArray[j].substring(0, newArrayDecimal);
+        var discountArrayInt = newArrayPrice * (1 - 0.25);
+        var discountArrayPrice = ((discountArrayInt % 1 != 0) ? discountArrayInt.toFixed(2) : discountArrayInt);
+        dropDownPrices.push(discountArrayPrice);
+        $(textArray[j]).append(" <span class='dDPrice' style='color:red; display:inline'>£" + discountArrayPrice + "</span>");
     }
 })();
 
